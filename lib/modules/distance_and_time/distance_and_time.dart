@@ -85,7 +85,7 @@ class DistanceAndTime extends StatelessWidget {
             ],
           ),
           top: 0,
-          bottom: 450.0,
+          bottom: 575.0,
           left: 0,
           right: 0,
         )

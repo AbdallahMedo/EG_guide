@@ -53,6 +53,13 @@ dependencies:
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.1
   flutter_polyline_points: ^1.0.0
+  form_field_validator: ^1.0.1
+  phonenumbers: ^1.0.0
+  flutter_pw_validator: ^1.2.1
+  dotted_border: 2.0.0+3
+  fluttericon: ^2.0.0
+  flutter_signin_button: ^2.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +89,7 @@ flutter:
     - images/user.png
     - images/user2.png
     - images/user3.png
+    - lib/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

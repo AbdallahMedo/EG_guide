@@ -276,7 +276,7 @@ class _mapsscreenState extends State<mapsscreen> {
         title: "Your Current Location",
       ),
       //icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     );
     addMarkerToMarkersAndUpdateUI(currentLocationMarker);
   }

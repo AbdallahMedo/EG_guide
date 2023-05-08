@@ -40,3 +40,28 @@ Widget defaultFormField({
   ),
 
 );
+
+Widget defaultButton({
+  double width=400.0,
+  Alignment alignment= Alignment.center,
+  VoidCallback? function,
+  double radius =15,
+  required String text,
+  required TextStyle theme,
+  bool isUppercase =true,
+  required Color backgroun,
+}) =>Container(
+  width: 400.0,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.all(Radius.circular(radius)),
+    color:Color.fromRGBO(143, 205, 216, 10),
+  ),
+  clipBehavior: Clip.antiAliasWithSaveLayer,
+  child: MaterialButton(
+    onPressed: function,
+    child: Text(
+      isUppercase? text.toUpperCase(): text,
+      style: theme,
+    ),
+  ),
+);
