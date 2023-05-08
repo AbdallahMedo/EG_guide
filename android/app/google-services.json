@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "749584595251",
+    "project_id": "egdrive-a5a79",
+    "storage_bucket": "egdrive-a5a79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749584595251:android:4d90d29b78b0434e50a646",
+        "android_client_info": {
+          "package_name": "com.example.egdrive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749584595251-0a4sp0tsgfp3ur6tsfvd8upklosepc0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE1PNfTTWP3A4qZvPurOb_VxLQcjRIGbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749584595251-0a4sp0tsgfp3ur6tsfvd8upklosepc0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
