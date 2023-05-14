@@ -13,6 +13,8 @@ Widget defaultFormField({
   dynamic onTap,
 
 
+
+
 })=>TextFormField(
   onTap: onTap,
   validator:Validator,
@@ -20,9 +22,13 @@ Widget defaultFormField({
   keyboardType:type,
   controller:controler,
   decoration: InputDecoration(
+
       labelText: label,
       border: OutlineInputBorder(
-        borderRadius:BorderRadius.all(Radius.circular(15.0),),
+        borderRadius:BorderRadius.all(
+          Radius.circular(15.0),
+
+        ),
         borderSide: BorderSide(
           color: Colors.orange,
           width: 5.0,

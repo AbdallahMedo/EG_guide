@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../shared/components/components.dart';
-
 
 class Sign_up extends StatefulWidget {
 
@@ -51,7 +48,7 @@ class _Sign_upState extends State<Sign_up> {
             child: Form(
               key: formkey,
               child: Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 0.0, right: 0.0),
+                padding: const EdgeInsets.only(top: 40.0, left: 0.0, right: 0.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -102,7 +99,7 @@ class _Sign_upState extends State<Sign_up> {
                     TextFormField(
                       validator:(value) {
                         if (value!.isEmpty) {
-                          return 'fill the blank';
+                          return '*Required';
                         }
                       },
                       maxLength: 11,
@@ -127,7 +124,7 @@ class _Sign_upState extends State<Sign_up> {
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.lock),
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.remove_red_eye),
+                            icon: Icon(showPassword?Icons.visibility:Icons.visibility_off),
                             onPressed: () => setState(() => showPassword = !showPassword),
                           ),
                         ),
@@ -147,7 +144,7 @@ class _Sign_upState extends State<Sign_up> {
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.lock),
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.remove_red_eye),
+                            icon: Icon(showConfirmPassword?Icons.visibility:Icons.visibility_off),
                             onPressed: () {
                               setState(() {
                                 showConfirmPassword = !showConfirmPassword;
@@ -162,11 +159,11 @@ class _Sign_upState extends State<Sign_up> {
                             return 'The passwords do not match';
                           return null;
                         }),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
 
 
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
 
                       children: [
 
@@ -234,7 +231,7 @@ class _Sign_upState extends State<Sign_up> {
                       ],
                     ),
                     SizedBox(
-                      height: 10.0,
+                      height: 5.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -253,8 +250,7 @@ class _Sign_upState extends State<Sign_up> {
                             child: SvgPicture.asset(
                               "lib/icons/facebook.svg",
                               color: Colors.blue,
-                              height: 27,
-
+                              height: 25,
                             ),
                           ),
                         ),
@@ -273,59 +269,30 @@ class _Sign_upState extends State<Sign_up> {
                                 border:
                                 Border.all( color: Colors.blue,width: 1)),
                             child: SvgPicture.asset(
-                              "lib/icons/G.svg",
+                              "lib/icons/google-plus.svg",
                               //cacheColorFilter: Colors.accents.any((element) => true),
-                              height: 27,
+                              height: 25,
                             ),
                           ),
                         ),
                       ],
                     ),
 
-                    const SizedBox(height: 20),
-                    Container(
-
-                      alignment: Alignment.center,
-                      width: 400.0,
-                     // decoration: BoxDecoration(
-                       // borderRadius: BorderRadius.all(Radius.circular(15)),
-                        //color: Color.fromRGBO(143, 205, 216, 10),
-
-
-
-                      // child: MaterialButton(
-                      //     child: const Text(
-                      //       'Sign Up',
-                      //       style: TextStyle(
-                      //         color: Colors.white,
-                      //         fontSize: 20,
-                      //         fontWeight: FontWeight.bold,
-                      //       ),
-                      //     ),
-                      //     shape: OutlineInputBorder(
-                      //       borderRadius: BorderRadius.circular(15),
-                      //       borderSide: BorderSide.none,
-                      //     ),
-                      //     onPressed: () {
-                      //       setState(() {
-                      //         if (formkey.currentState!.validate( )){}
-                      //       });
-                      //     }),
-                      child: defaultButton(
-                        backgroun: Color.fromRGBO(143, 205, 216, 10),
-                        text: "SignUp",
-                        theme: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                        ),
-                        isUppercase: false,
-                        function: (){
-                          if (formkey.currentState!.validate( )){
-                            formkey.currentState!.save();
-                          }
-                        },
-
+                    const SizedBox(height: 10),
+                    defaultButton(
+                      backgroun: Color.fromRGBO(143, 205, 216, 10),
+                      text: "SignUp",
+                      theme: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
                       ),
+                      isUppercase: false,
+                      function: (){
+                        if (formkey.currentState!.validate( )){
+                          formkey.currentState!.save();
+                        }
+                      },
+
                     ),
                   ],
                 ),

@@ -45,7 +45,8 @@ class _mapsscreenState extends State<mapsscreen> {
       target: LatLng(position!.latitude, position!.longitude),
       bearing: 0.0,
       tilt: 0.0,
-      zoom: 14.0);
+      zoom: 15.0
+  );
 
   ///Markers
   Set<Marker> markers = Set();
@@ -126,16 +127,15 @@ class _mapsscreenState extends State<mapsscreen> {
       height: 50,
       //iconColor: Colors.red,
       scrollPadding: const EdgeInsets.only(top: 5, bottom: 56),
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 100),
       transitionCurve: Curves.easeInOut,
       physics: const BouncingScrollPhysics(),
       axisAlignment: isPortrait ? 0.0 : -1.0,
       openAxisAlignment: 0.0,
       width: isPortrait ? 600 : 500,
-      debounceDelay: const Duration(milliseconds: 500),
+      debounceDelay: const Duration(milliseconds: 100),
       // progress: progressIndicator,
       onQueryChanged: (query) {
-        // /getPlacesSuggestions(query);
         final sessionToken = Uuid().v4();
         BlocProvider.of<MapsCubit>(context)
             .emitPlaceSuggestions(query, sessionToken);
@@ -182,6 +182,7 @@ class _mapsscreenState extends State<mapsscreen> {
               buildSuggestionsBloc(),
               buildSelectedPlaceLocationBloc(),
               buildDirectionsBloc(context),
+
             ],
           ),
         );
@@ -201,25 +202,11 @@ class _mapsscreenState extends State<mapsscreen> {
             LatLng(selectedPlace!.result.geometry.location.lat,
                 selectedPlace!.result.geometry.location.lng),
           );
-        }
-        ;
+        };
       },
       child: Container(),
     );
   }
-
-  // void getDirections() {
-  //   BlocProvider.of<MapsCubit>(context).emitPlaceDirections(
-  //     LatLng(
-  //         position!.latitude,
-  //         position!.longitude
-  //     ),
-  //     LatLng(
-  //         selectedPlace!.result.geometry.location.lat,
-  //         selectedPlace!.result.geometry.location.lng
-  //     ),
-  //       );
-  // }
   Widget buildDirectionsBloc(BuildContext context) {
     return BlocListener<MapsCubit, MapsState>(
       listener: (context, state) {
@@ -234,11 +221,6 @@ class _mapsscreenState extends State<mapsscreen> {
       child: Container(),
     );
   }
-
-  // void getPolyLinePoints(){
-  //   polyLinePoints=placeDirestion!.polyLinePoints.map((e) => LatLng(e.latitude, e.longitude)).toList();
-  //
-  // }
   Future<void> goToSearchedForLocation() async {
     buildCameraNewPosition();
     final GoogleMapController controller = await _controller.future;
@@ -292,7 +274,7 @@ class _mapsscreenState extends State<mapsscreen> {
   //late PlaceSuggestion placeSuggestion;
   Widget buildPlacesList(BuildContext context) {
     return ListView.builder(
-        itemCount: places.length.compareTo(0),
+        itemCount: places.length,
         itemBuilder: (ctx, index) {
           return InkWell(
             onTap: () async {
@@ -312,7 +294,8 @@ class _mapsscreenState extends State<mapsscreen> {
           );
         },
         shrinkWrap: true,
-        physics: const ClampingScrollPhysics());
+        physics: const ClampingScrollPhysics()
+    );
   }
 
   Widget buildSuggestionsBloc() {
@@ -332,59 +315,6 @@ class _mapsscreenState extends State<mapsscreen> {
     );
   }
 
-  // Widget buildDiretionsBloc() {
-  //   return BlocListener<MapsCubit, MapsState>(
-  //     listener: (context, state) {
-  //       if (state is DirectionsLoaded) {
-  //         placeDirections = (state).placeDirections;
-  //         getPolylinePoints();
-  //       }
-  //     },
-  //     child: Container(),
-  //   );
-  // }
-  // List<PlaceSuggestion> places = [];
-
-  // late PlaceSuggestion placeSuggestion;
-  // Widget buildPlacesList() {
-  //   return ListView.builder(
-  //       itemBuilder: (ctx, index) {
-  //         return InkWell(
-  //           onTap: () async {
-  //             placeSuggestion = places[index];
-  //             controller.close();
-  //
-  //           },
-  //           child: PlaceItem(
-  //             suggestion: places[index],
-  //           ),
-  //         );
-  //       },
-  //       itemCount: places.length,
-  //       shrinkWrap: true,
-  //       physics: const ClampingScrollPhysics());
-  // }
-  //
-  //
-  //
-  //
-  // Widget buildSuggestionsBloc() {
-  //   return BlocBuilder< MapsCubit , MapsState>(
-  //     builder: (context, state) {
-  //       if (state is PlacesLoaded) {
-  //         places = (state).places;
-  //         if (places.length != 0) {
-  //           return buildPlacesList();
-  //         } else {
-  //           return Container();
-  //         }
-  //       } else {
-  //         return Container();
-  //       }
-  //     },
-  //   );
-  // }
-  //
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -394,7 +324,7 @@ class _mapsscreenState extends State<mapsscreen> {
       child: BlocConsumer<MapsCubit, MapsState>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubobj = MapsCubit.get(context);
+          //var cubobj = MapsCubit.get(context);
           return Scaffold(
             key: scaffoldKey,
             floatingActionButton: Padding(

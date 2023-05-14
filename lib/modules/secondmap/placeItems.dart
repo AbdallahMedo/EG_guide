@@ -13,7 +13,7 @@ class PlaceItem extends StatelessWidget {
         .replaceAll(suggestion.description.split(',')[0], '');
     return Container(
       width: double.infinity,
-      margin: EdgeInsetsDirectional.all(5),
+      margin: EdgeInsetsDirectional.all(4),
       padding: EdgeInsetsDirectional.all(4),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(8)),
@@ -41,7 +41,7 @@ class PlaceItem extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
-                    text: subTitle.substring(2),
+                    text: subTitle,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 10,

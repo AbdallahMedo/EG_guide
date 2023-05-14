@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:diamond_bottom_bar/diamond_bottom_bar.dart';
 import '../modules/firstmap/Test_Map.dart';
 import '../screens/home.dart';
-import '../screens/location.dart';
 import '../screens/settings.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerIcon: Icons.place,
         selectedIndex: currentIndex,
         onItemPressed: onPressed,
+
       ),
     );
   }

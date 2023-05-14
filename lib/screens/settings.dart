@@ -6,6 +6,7 @@ import 'package:settings_ui/settings_ui.dart';
 import '../shared/them/ThemModel.dart';
 import 'EditProfile.dart';
 import 'Profile.dart';
+import 'language.dart';
 
 class Setting extends StatefulWidget {
   const Setting({Key? key}) : super(key: key);
@@ -103,6 +104,11 @@ class _SettingState extends State<Setting> {
                 SettingsTile.navigation(
                   leading: Icon(Icons.language,color: Colors.lightBlueAccent,size: 25.0,),
                   title: Text('Language'),
+                  onPressed: (contxt){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder:(contxt)=>LanguageSwtch())
+                    );
+                  },
 
 
 

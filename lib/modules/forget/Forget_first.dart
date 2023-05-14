@@ -30,6 +30,7 @@ class _Forget_passwordState extends State<Forget_password>  {
                   'Forget Password',
                   style: TextStyle(
                     fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
@@ -51,34 +52,31 @@ class _Forget_passwordState extends State<Forget_password>  {
                   padding: const EdgeInsets.only(right: 20.0),
                   child: Container(
                     width: double.infinity,
-                    child: Expanded(
-                      child: TextFormField(
-                        //controller: phoneNumberController,
-                        validator: (value){
-                          if(value!.isEmpty){
-                            //  r'^[0-9]{10}$' pattern plain match number with length 10
-                            return "*Required";
-                          }else if(value.length<11){
-                            return "Enter Correct Phone Number";
-                          } else if(!RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$').hasMatch(value)){
-                            return "Enter Correct Phone Number";
-                          }else{
-                            return null;
-                          }
-                        },
+                    child: TextFormField(
+                      //controller: phoneNumberController,
+                      validator: (value){
+                        if(value!.isEmpty){
+                          //  r'^[0-9]{10}$' pattern plain match number with length 10
+                          return "*Required";
+                        }else if(value.length<11){
+                          return "Enter Correct Phone Number";
+                        } else if(!RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$').hasMatch(value)){
+                          return "Enter Correct Phone Number";
+                        }else{
+                          return null;
+                        }
+                      },
 
-                        onChanged: (value) {
-                          phone = value;
-                        },
-                        inputFormatters: [
-                          new LengthLimitingTextInputFormatter(11),
-                        ],
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Phone number',
-                        ),
-
+                      onChanged: (value) {
+                        phone = value;
+                      },
+                      inputFormatters: [
+                        new LengthLimitingTextInputFormatter(11),
+                      ],
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Phone number',
                       ),
 
                     ),
@@ -97,70 +95,31 @@ class _Forget_passwordState extends State<Forget_password>  {
                   height: 40.0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    // decoration: const BoxDecoration(
-                    //     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    //   color: Color.fromRGBO(143, 205, 216, 10),
-                    //
-                    // ),
-                    // alignment: Alignment.center,
-                    // width: 300.0,
-                    // child: MaterialButton(
-                    //   onPressed: () {
-                    //   if(formGlobalKey.currentState!.validate()) {
-                    //     formGlobalKey.currentState!.save();
-                    //
-                    //     Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //
-                    //         builder: (contxt) => Verification_page(
-                    //           phone: phone,
-                    //         ),
-                    //
-                    //       ),
-                    //     );
-                    //   }
-                    //
-                    //   },
-                    //
-                    //
-                    //   child: Text(
-                    //     "Send code",
-                    //     style: TextStyle(
-                    //       fontWeight: FontWeight.bold,
-                    //       fontSize: 20.0,
-                    //     ),
-                    //   ),
-                    //
-                    // ),
-
-                    child: defaultButton(
-                      backgroun: Color.fromRGBO(143, 205, 216, 10),
-                      text: "Send code",
-                      theme: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                      isUppercase: false,
-                      function: (){
-                        if(formGlobalKey.currentState!.validate()) {
-                              formGlobalKey.currentState!.save();
-                              Navigator.push(
-                                         context,
-                                         MaterialPageRoute(
-
-                                           builder: (contxt) => Verification_page(
-                                             phone: phone,
-                                           ),
-
-                                        ),
-                                     );
-                        }
-                      },
-
+                  padding: const EdgeInsets.only(right: 25),
+                  child: defaultButton(
+                    backgroun: Color.fromRGBO(143, 205, 216, 10),
+                    text: "Send code",
+                    theme: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
                     ),
+                    isUppercase: false,
+                    function: (){
+                      if(formGlobalKey.currentState!.validate()) {
+                            formGlobalKey.currentState!.save();
+                            Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+
+                                         builder: (contxt) => Verification_page(
+                                           phone: phone,
+                                         ),
+
+                                      ),
+                                   );
+                      }
+                    },
+
                   ),
                 ),
               ],

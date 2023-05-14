@@ -87,7 +87,7 @@ class _Login_PageState extends State<Login_Page> {
         key: formGlobalKey,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
+            padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -146,7 +146,7 @@ class _Login_PageState extends State<Login_Page> {
                             Icons.lock,
                           ),
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.remove_red_eye),
+                            icon: Icon(showPassword?Icons.visibility:Icons.visibility_off),
                             onPressed: () => setState(() => showPassword = !showPassword),
                           ),
                         ),
@@ -269,7 +269,7 @@ class _Login_PageState extends State<Login_Page> {
                                   border:
                                   Border.all( color: Colors.blue,width: 1)),
                               child: SvgPicture.asset(
-                                "lib/icons/G.svg",
+                                "lib/icons/google-plus.svg",
                                 //cacheColorFilter: Colors.accents.any((element) => true),
                                 height: 27,
                               ),

@@ -92,6 +92,7 @@ class _EditProfileState extends State<EditProfile> {
                       controler: usercontroler,
                       type:TextInputType.text,
                       onTap: (){},
+
                     ),
                     SizedBox(height: 20.0,),
                     defaultFormField(
