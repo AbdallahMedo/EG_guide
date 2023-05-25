@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:ttttt/modules/login/login_page.dart';
 import 'package:uuid/uuid.dart';
 import '../../data/repositry/map_repo.dart';
 import '../../data/repositry/placeSuggestion.dart';
@@ -23,10 +25,19 @@ class mapsscreen extends StatefulWidget {
 }
 
 class _mapsscreenState extends State<mapsscreen> {
+  FirebaseAuth? instance=FirebaseAuth.instance;
+
   @override
   initState() {
     super.initState();
     getMyCurrentLocation();
+    instance?.authStateChanges().listen((User? user) {
+      if(user== null){
+       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login_Page()));
+      }else{
+        print('welcom');
+      }
+    });
   }
 
   Completer<GoogleMapController> _controller = Completer();
@@ -94,7 +105,7 @@ class _mapsscreenState extends State<mapsscreen> {
               Polyline(
                 polylineId: const PolylineId('my PolyLine_Id'),
                 color: Colors.purple,
-                width: 3,
+                width: 5,
                 points: polyLinePoints,
               )
             }
@@ -197,6 +208,7 @@ class _mapsscreenState extends State<mapsscreen> {
         if (state is PlaceLocationLoaded) {
           selectedPlace = (state).place;
           goToSearchedForLocation();
+          buildCurrentLocationMarker();
           BlocProvider.of<MapsCubit>(context).emitPlaceDirections(
             LatLng(position!.latitude, position!.longitude),
             LatLng(selectedPlace!.result.geometry.location.lat,
@@ -234,7 +246,7 @@ class _mapsscreenState extends State<mapsscreen> {
       markerId: MarkerId('2'),
       position: goToSearchedForPlace!.target,
       onTap: () {
-        buildCurrentLocationMarker();
+        // buildCurrentLocationMarker();
         setState(() {
           isSearchedPlaceMarkerClicked = true;
           isTimeAndDistanceVisiable = true;

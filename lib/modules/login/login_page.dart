@@ -29,8 +29,8 @@ class _Login_PageState extends State<Login_Page> {
     });
   }
 
-  var emailcontroller = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+   TextEditingController emailcontroller = TextEditingController();
+   TextEditingController _password = TextEditingController();
   bool showPassword = true;
 
   final formGlobalKey = GlobalKey<FormState>();

@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ttttt/screens/MarkerList.dart';
 import 'package:ttttt/shared/them/ThemModel.dart';
+import 'modules/firstmap/Test_Map.dart';
 import 'modules/login/login_page.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -61,7 +66,7 @@ class _MyAppState extends State<MyApp> {
           //   return supportedLocales.first;
           // },
 
-          home: Login_Page(),
+          home: mapsscreen(),
         );
       })
     );
