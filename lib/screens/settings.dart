@@ -1,10 +1,14 @@
- import 'package:flutter/cupertino.dart';
+ import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:ttttt/screens/ApoutUs.dart';
 
+import '../modules/login/login_page.dart';
+import '../provider/auth_provider.dart';
 import '../shared/them/ThemModel.dart';
-import 'EditProfile.dart';
+import 'Conditions.dart';
 import 'Profile.dart';
 import 'language.dart';
 
@@ -16,13 +20,25 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  FirebaseAuth instance=FirebaseAuth.instance;
+  @override
+  // initState() {
+  //   super.initState();
+  //   instance.authStateChanges().listen((User? user) {
+  //     if(user== instance.signOut()){
+  //       Navigator.pushReplacement(
+  //           context, MaterialPageRoute(builder: (context)=>Login_Page()));
+  //     }
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
+    var prov = Provider.of<AuthProvider>(context);
     return Consumer(
       builder:( context,ThemModel themeNotifier,child){
         return Scaffold(
         body: SettingsList(
-          contentPadding: EdgeInsets.all(5.0),
+          //contentPadding: EdgeInsets.all(1.0),
           shrinkWrap: true,
           sections: [
             SettingsSection(
@@ -50,18 +66,15 @@ class _SettingState extends State<Setting> {
 
                 ),
                 SettingsTile.navigation(
-                  leading: Icon(Icons.edit,color: Colors.deepPurple,size: 25.0,),
-                  title: Text('Edit Profile'),
-                  onPressed: (context){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>EditProfile())
-                    );
-                  },
-                ),
-                SettingsTile.navigation(
                   leading: Icon(Icons.logout,color: Colors.redAccent,size: 25.0,),
                   title: Text('Sign Out'),
+
+                  onPressed: (context){
+
+
+                    prov.logout();
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login_Page()));
+                  },
                 ),
 
               ],
@@ -120,10 +133,27 @@ class _SettingState extends State<Setting> {
 
 
 
+
                 ),
                 SettingsTile.navigation(
                   leading: Icon(Icons.contact_support_outlined,color: Colors.deepPurple,size: 25.0,),
                   title: Text('Terms and Conditions'),
+                  onPressed: (context){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder:(contxt)=>Conditions())
+                    );
+
+                  },
+                ),
+                SettingsTile.navigation(
+                  leading: Icon(Icons.info_outline_rounded,color: Colors.black,size: 25.0,),
+                  title: Text('AboutUs'),
+                  onPressed: (context){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder:(contxt)=>About_Us())
+                    );
+
+                  },
                 ),
 
               ],

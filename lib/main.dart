@@ -1,15 +1,30 @@
+import '../provider/auth_provider.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
-import 'package:ttttt/screens/MarkerList.dart';
+import 'package:ttttt/provider/auth_provider.dart';
 import 'package:ttttt/shared/them/ThemModel.dart';
-import 'modules/firstmap/Test_Map.dart';
+import 'layouts/home_screen.dart';
 import 'modules/login/login_page.dart';
+import 'modules/pageview/list.dart';
+import 'modules/splachscreen/SplachScreen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => AuthProvider(),
+      ),
+
+
+    ],
+      child: MyApp() ,
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -26,6 +41,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
  // Locale? _locale;
   // This widget is the root of your application.
   // void setLocale(Locale locale){
@@ -37,6 +53,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return ChangeNotifierProvider(
       create: (_)=>ThemModel(),
       child:Consumer(builder: (context,ThemModel themModel,child){
@@ -66,10 +83,24 @@ class _MyAppState extends State<MyApp> {
           //   return supportedLocales.first;
           // },
 
-          home: mapsscreen(),
+          home: _showScreen(context),
         );
       })
     );
+  }
+  Widget _showScreen(context) {
+    var prov = Provider.of<AuthProvider>(context);
+    switch(prov.authStatus){
+      case AuthStatus.authenticating:
+        return Login_Page();
+      case AuthStatus.unAuthenticated:
+        return SplashScreen();
+      case AuthStatus.authenticated:
+        return HomeScreen();
+    }
+    return Container();
+
+    throw UnimplementedError();
   }
 }
 

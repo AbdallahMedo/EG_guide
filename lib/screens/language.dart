@@ -30,68 +30,87 @@ class _LanguageSwtchState extends State<LanguageSwtch> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0,top: 40.0),
-            child: Row(
-              children: [
-                IconButton(
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                    icon:Icon(Icons.arrow_back_ios_outlined)),
-                Text(
-                  'Switch Language',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                  ),
-                ),
-
-              ],
-
-            ),
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('lib/icons/loc.jpg'),
+              opacity: 0.3,
+              fit: BoxFit.fitHeight
           ),
-          SizedBox(height: 25.0,),
-          MaterialButton(
-              onPressed: (){},
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: Container(
-              //  color: Colors.white,
-                width: double.infinity,
-                height: 30,
-                child: Text(
-                  'English',
-                  style: TextStyle(
-                    fontSize: 20.0,
-
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0,top: 40.0),
+              child: Row(
+                children: [
+                  IconButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      icon:Icon(Icons.arrow_back_ios_outlined)),
+                  Text(
+                    'Language',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0,
+                    ),
                   ),
-                ),
+
+                ],
+
               ),
             ),
-              ),
-          SizedBox(height: 10.0,),
-          MaterialButton(
-            onPressed: (){},
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8),
+            SizedBox(height: 25.0,),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
               child: Container(
-                width: double.infinity,
-                height: 30,
-                child: Text(
-                    'Arabic',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                  ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.white70
                 ),
+                child: MaterialButton(
+                    onPressed: (){},
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Container(
+                    //  color: Colors.white,
+                      width: double.infinity,
+                      height: 30,
+                      child: Text(
+                        'English',
+                        style: TextStyle(
+                          fontSize: 20.0,
+
+                        ),
+                      ),
+                    ),
+                  ),
+                    ),
               ),
             ),
-          ),
+            SizedBox(height: 10.0,),
+            // MaterialButton(
+            //   onPressed: (){},
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(left: 8),
+            //     child: Container(
+            //       width: double.infinity,
+            //       height: 30,
+            //       child: Text(
+            //           'Arabic',
+            //         style: TextStyle(
+            //           fontSize: 20.0,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
-        ],
+          ],
+        ),
       ),
     );
   }

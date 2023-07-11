@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:ttttt/modules/login/login_page.dart';
+import 'package:material_floating_search_bar_2/material_floating_search_bar_2.dart';
 import 'package:uuid/uuid.dart';
 import '../../data/repositry/map_repo.dart';
 import '../../data/repositry/placeSuggestion.dart';
@@ -25,20 +23,35 @@ class mapsscreen extends StatefulWidget {
 }
 
 class _mapsscreenState extends State<mapsscreen> {
-  FirebaseAuth? instance=FirebaseAuth.instance;
-
   @override
   initState() {
     super.initState();
     getMyCurrentLocation();
-    instance?.authStateChanges().listen((User? user) {
-      if(user== null){
-       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login_Page()));
-      }else{
-        print('welcom');
-      }
-    });
+    // for(int i=0;i<latln.length;i++){
+    //   markers.add(
+    //       Marker(
+    //         markerId: MarkerId(i.toString()),
+    //         position: latln[i],
+    //         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen,),
+    //
+    //       )
+    //   );
+    //   setState(() {
+    //
+    //   });
+    //   poly.add(
+    //       Polyline(
+    //         polylineId: PolylineId('1'),
+    //         points: latln,
+    //
+    //       )
+    //   );
+    // }
+
   }
+
+
+
 
   Completer<GoogleMapController> _controller = Completer();
   FloatingSearchBarController controller = FloatingSearchBarController();
@@ -48,7 +61,7 @@ class _mapsscreenState extends State<mapsscreen> {
     position = await LocationHelper.getCurrentLocation();
 
     position = await Geolocator.getLastKnownPosition().whenComplete(() {
-      setState(() {});
+      // setState(() {});
     });
   }
 
@@ -59,6 +72,7 @@ class _mapsscreenState extends State<mapsscreen> {
       zoom: 15.0
   );
 
+
   ///Markers
   Set<Marker> markers = Set();
   PlaceSuggestion? placeSuggestion;
@@ -66,7 +80,6 @@ class _mapsscreenState extends State<mapsscreen> {
   late Marker searchedPlaceMarker;
   late Marker currentLocationMarker;
   CameraPosition? goToSearchedForPlace;
-
   void buildCameraNewPosition() {
     goToSearchedForPlace = CameraPosition(
       target: LatLng(
@@ -88,6 +101,21 @@ class _mapsscreenState extends State<mapsscreen> {
   var isTimeAndDistanceVisiable = false;
   late String time;
   late String distance;
+  // final Set<Polyline>poly={};
+  // List<LatLng>latln=[
+  //   LatLng(30.558381341080032, 31.022182536588375),
+  //   LatLng(30.562068534086237, 31.019395070205867),
+  //   LatLng(30.513414520115774, 31.122635235081265),
+  //   LatLng(30.550480193550566, 31.137552813214047),
+  //   LatLng(30.54726159581984, 31.11986014936691),
+  //   LatLng(30.558284031361787, 31.020189262517597),
+  //   LatLng(30.5734876990458, 31.010635979993783),
+  //   LatLng(30.513338593615753, 31.122747936917836),
+  //
+  //
+  //
+  //
+  // ];
 
   Widget buildMap() {
     return GoogleMap(
@@ -99,19 +127,89 @@ class _mapsscreenState extends State<mapsscreen> {
       myLocationButtonEnabled: false,
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
+        setState(() {
+          markers.add(
+          Marker(
+            markerId: MarkerId('3'),
+            position: LatLng(30.54726159581984, 31.11986014936691),
+
+               infoWindow:InfoWindow(
+                    title: ("موقف قويسنا - شبين ")
+                ),
+            icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+            onTap: (){
+              BuildBottomSheet();
+            },
+
+
+
+          ),
+          );
+          markers.add(
+           Marker(
+               markerId:MarkerId('ashliem'),
+                   position: LatLng(30.558284031361787, 31.020189262517597),
+             infoWindow:InfoWindow(
+                 title: ("موقف اتوبيسات قصر جامعه ")
+             ),
+             icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+             onTap: (){
+                 BuildBottomSheet();
+                 },
+
+
+
+           )
+          );
+          markers.add(
+              Marker(
+                markerId:MarkerId('shepin'),
+                position: LatLng(30.513338593615753, 31.122747936917836),
+                infoWindow:InfoWindow(
+                    title: ("موقف اشليم - قويسنا")
+                ),
+                icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+                onTap: (){
+                  BuildBottomSheet();
+                },
+
+
+
+              )
+          );
+          markers.add(
+              Marker(
+                markerId:MarkerId('shepin gamaa'),
+                position: LatLng(30.5734876990458, 31.010635979993783),
+                infoWindow:InfoWindow(
+                    title: ("القصر")
+                ),
+                icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+                onTap: (){
+                  BuildBottomSheet();
+                },
+
+
+
+              )
+          );
+        });
       },
       polylines: placeDirestion != null
           ? {
-              Polyline(
-                polylineId: const PolylineId('my PolyLine_Id'),
-                color: Colors.purple,
-                width: 5,
-                points: polyLinePoints,
-              )
-            }
+        Polyline(
+          polylineId: const PolylineId('my PolyLine_Id'),
+          color: Colors.purple,
+          width: 5,
+          points: polyLinePoints,
+          patterns: [PatternItem.dot, PatternItem.gap(15)],
+        )
+      }
           : {},
     );
+
   }
+
 
   Future<void> _goTomyCurrentLocation() async {
     final GoogleMapController controller = await _controller.future;
@@ -174,7 +272,7 @@ class _mapsscreenState extends State<mapsscreen> {
               CircleAvatar(
                 backgroundColor: Colors.blue[600],
                 child: Text(
-                  "MM",
+                  "KM",
                   style: TextStyle(fontSize: 15),
                 ),
                 radius: 15.0,
@@ -193,7 +291,6 @@ class _mapsscreenState extends State<mapsscreen> {
               buildSuggestionsBloc(),
               buildSelectedPlaceLocationBloc(),
               buildDirectionsBloc(context),
-
             ],
           ),
         );
@@ -206,9 +303,8 @@ class _mapsscreenState extends State<mapsscreen> {
     return BlocListener<MapsCubit, MapsState>(
       listener: (context, state) {
         if (state is PlaceLocationLoaded) {
+          BuildBottomSheet();
           selectedPlace = (state).place;
-          goToSearchedForLocation();
-          buildCurrentLocationMarker();
           BlocProvider.of<MapsCubit>(context).emitPlaceDirections(
             LatLng(position!.latitude, position!.longitude),
             LatLng(selectedPlace!.result.geometry.location.lat,
@@ -219,6 +315,7 @@ class _mapsscreenState extends State<mapsscreen> {
       child: Container(),
     );
   }
+
   Widget buildDirectionsBloc(BuildContext context) {
     return BlocListener<MapsCubit, MapsState>(
       listener: (context, state) {
@@ -328,7 +425,6 @@ class _mapsscreenState extends State<mapsscreen> {
   }
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context1) {
     return BlocProvider(
@@ -357,9 +453,9 @@ class _mapsscreenState extends State<mapsscreen> {
                 buildFloatingSearchBar(context),
                 isSearchedPlaceMarkerClicked
                     ? DistanceAndTime(
-                        isTimeAndDistanceVisiable: isTimeAndDistanceVisiable,
-                        placeDirections: placeDirestion,
-                      )
+                  isTimeAndDistanceVisiable: isTimeAndDistanceVisiable,
+                  placeDirections: placeDirestion,
+                )
                     : Container(),
               ],
             ),
@@ -368,4 +464,110 @@ class _mapsscreenState extends State<mapsscreen> {
       ),
     );
   }
+  Future BuildBottomSheet(){
+    return showModalBottomSheet(
+      shape: const RoundedRectangleBorder( // <-- SEE HERE
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+
+
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: 450.0,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('lib/icons/loc.jpg'),
+                    opacity: 0.3,
+                    fit: BoxFit.fitHeight
+                ),
+
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.arrow_forward,color: Colors.black,size: 30.0,),
+                        SizedBox(width: 15.0,),
+                        Text(
+                          'Read Directions',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0
+
+                          ),
+                        ),
+                        SizedBox(width: 15.0,),
+                        Icon(Icons.location_on,color: Colors.green,),
+
+
+
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: (){
+                      goToSearchedForLocation();
+                      buildCurrentLocationMarker();
+                      Navigator.pop(context);
+                    },
+                    child:RichText(
+                      text:TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "(1) اذهب مباشرة الي اول علامه\n (موقف مواصلات اشليم - قويسنا)\n قم باخذ السياره المتجهه لقويسنا \n\n",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ),
+                          TextSpan(
+                            text: "(2) انتظر حتي تاتي لثاني علامه\n(موقف مواصلات قويسنا - شبين الكوم) \nقم باخذ السياره المتجهه الي شبين الكوم \n\n ",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+
+                            )
+                          ),
+                          TextSpan(
+                            text: "(3) انتظر حتي تاتي الي ثالث علامه\n (موقف اتوبيسات قصر والجامعه) \nقم باخذ الاتوبيس لمتوجه الي الجامعه\n\n",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ),
+                          TextSpan(
+                            text: "(4) انتظر حتي رابع علامه قم بالنزول من الاتوبيس واتبع الاتجاهات حتي تصل الي وجهتك\n${placeSuggestion?.description}",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ),
+                        ]
+
+                      )
+                    )
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+
+
+
+    );
+  }
+
 }

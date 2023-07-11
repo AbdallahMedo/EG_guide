@@ -1,50 +1,69 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:diamond_bottom_bar/diamond_bottom_bar.dart';
 import '../modules/firstmap/Test_Map.dart';
-import '../screens/home.dart';
 import '../screens/settings.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   //HomeScreen(User? user, {Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 1;
-  late Widget _selectedWidget;
+  //FirebaseAuth instance=FirebaseAuth.instance;
+
+  int currentIndex=0 ;
+  final _buildBody=<Widget>[mapsscreen(),Setting()];
+  // late Widget _selectedWidget;
 
   @override
   void initState() {
-    _selectedWidget = mapsscreen();
+    currentIndex=0;
+    // _selectedWidget = mapsscreen();
     super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      body: _selectedWidget,
-      bottomNavigationBar: DiamondBottomNavigation(
-        itemIcons: const [Icons.home, Icons.settings],
-        centerIcon: Icons.place,
-        selectedIndex: currentIndex,
-        onItemPressed: onPressed,
+      body: _buildBody[currentIndex],
+      bottomNavigationBar:BottomNavigationBar(
+       selectedItemColor: Colors.blueAccent,
+        onTap:(x){
+         setState(() {
+           currentIndex=x;
+         });
+        },
+        items: [
+          BottomNavigationBarItem(
+            label:'Home',
+              icon: Icon(Icons.home),
+           // backgroundColor: Colors.lightBlue,
+
+          ),
+          BottomNavigationBarItem(
+            label: "Settings",
+              icon: Icon(Icons.settings),
+          ),
+        ],
 
       ),
     );
   }
 
-  void onPressed(index) {
-    setState(() {
-      currentIndex = index;
-      if (index == 0) {
-        _selectedWidget = const Home();
-      } else if (index == 1) {
-        _selectedWidget =  mapsscreen();
-      } else if (index == 2) {
-        _selectedWidget = const Setting();
-      }
-    });
-  }
+  // void onPressed(index) {
+  //   setState(() {
+  //     currentIndex = index;
+  //     if (index == 0) {
+  //       _selectedWidget = mapsscreen();
+  //     }
+  //     if (index == 1) {
+  //       _selectedWidget = Setting();
+  //     }
+  //   });
+  // }
+
 }

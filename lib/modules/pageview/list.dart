@@ -18,17 +18,17 @@ class _listState extends State<list> {
         title: "Keep",
         description:
         "Accept cryptocurrencies and digital assets, keep thern here, or send to orthers",
-        image: "lib/assets/1.svg"),
+        image: "lib/icons/1.svg"),
     page_view(
         title: "Buy",
         description:
         "Buy Bitcoin and cryptocurrencies with VISA and MasterVard right in the App",
-        image: "lib/assets/3.svg"),
+        image: "lib/icons/3.svg"),
     page_view(
         title: "Sell",
         description:
         "Sell your Bitcoin cryptocurrencies or Change with orthres digital assets or flat money",
-        image: "lib/assets/4.svg"),
+        image: "lib/icons/4.svg"),
   ];
   _onchanged(int index) {
     setState(() {
@@ -72,43 +72,53 @@ class _listState extends State<list> {
                 }
                 )
               ),
-              InkWell(
-                onTap: () {
-                  _controller.nextPage(
-                      duration: Duration(milliseconds: 800),
-                      curve: Curves.easeInOutQuint);
 
-                },
-                child:  AnimatedContainer(
-                  duration:  Duration(milliseconds: 300),
-                  height: 70,
-                  alignment: Alignment.center,
-                  width: (_currentPage == (_pages.length -1 )) ? 200 : 70,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius:  BorderRadius.circular(35),
-
-                  ),
-                  child: (_currentPage == (_pages.length -1 )
-
-                    ?
-                    Text(
-                    "Get Started",
-                    style: TextStyle(color: Colors.white , fontSize: 20,
-
-                  ),
-                      
-
-                )
-                      :Icon(
-                    Icons.navigate_next,
-                    color: Colors.white,
-                    size: 50,
-                  )
-              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        _controller.nextPage(
+                            duration: Duration(milliseconds: 700),
+                            curve: Curves.easeInOutQuint);
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login_Page()));
 
 
-              )
+                      },
+                      child:  AnimatedContainer(
+
+                        duration:  Duration(milliseconds: 500),
+                        height: 50,
+                        alignment: Alignment.center,
+                        width: (_currentPage == (_pages.length -1 )) ? 200 : 70,
+                        decoration: BoxDecoration(color: Colors.blue, borderRadius:  BorderRadius.circular(35),
+
+                        ),
+                        child: (_currentPage == (_pages.length -1 )
+
+                          ?
+                          Text(
+                          "Get Started",
+                          style: TextStyle(color: Colors.white , fontSize: 20,
+
+                        ),
+
+
+                      )
+                            :Icon(
+                          Icons.navigate_next,
+                          color: Colors.white,
+                          size: 50,
+                        )
+                    ),
+
+
+                    )
+                    ),
+                  ],
+                ),
               )
             ],
           ),

@@ -1,17 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ttttt/layouts/home_screen.dart';
+
 class Confirm_password extends StatefulWidget {
   @override
   _Confirm_passwordState createState() => _Confirm_passwordState();
 }
- class _Confirm_passwordState extends State<Confirm_password> {
+
+class _Confirm_passwordState extends State<Confirm_password> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
   var passwordController = TextEditingController();
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
-  bool obscureText=true;
+  bool obscureText = true;
   bool showPassword = true;
   bool showConfirmPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -42,7 +46,8 @@ class Confirm_password extends StatefulWidget {
                       prefixIcon: Icon(Icons.lock),
                       suffixIcon: IconButton(
                         icon: Icon(Icons.remove_red_eye),
-                        onPressed: () => setState(() => showPassword = !showPassword),
+                        onPressed: () =>
+                            setState(() => showPassword = !showPassword),
                       ),
                     ),
                     validator: (validator) {
@@ -57,17 +62,16 @@ class Confirm_password extends StatefulWidget {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: showConfirmPassword,
                     decoration: InputDecoration(
-                        labelText: "Confirm Password",
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.lock),
+                      labelText: "Confirm Password",
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.lock),
                       suffixIcon: IconButton(
                         icon: Icon(Icons.remove_red_eye),
                         onPressed: () {
                           setState(() {
                             showConfirmPassword = !showConfirmPassword;
-                              });
+                          });
                         },
-
                       ),
                     ),
                     validator: (validator) {
@@ -80,20 +84,23 @@ class Confirm_password extends StatefulWidget {
                   height: 30.0,
                 ),
                 Padding(
-
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       color: Color.fromRGBO(143, 205, 216, 10),
-
                     ),
                     alignment: Alignment.center,
                     width: 300.0,
-
                     child: MaterialButton(
                       onPressed: () async {
                         _form.currentState!.validate();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
                       },
                       child: Text(
                         "Submit",
@@ -113,5 +120,3 @@ class Confirm_password extends StatefulWidget {
     );
   }
 }
-
-
