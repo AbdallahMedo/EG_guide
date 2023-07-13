@@ -37,6 +37,7 @@ class _SettingState extends State<Setting> {
     return Consumer(
       builder:( context,ThemModel themeNotifier,child){
         return Scaffold(
+          backgroundColor: Colors.white,
         body: SettingsList(
           //contentPadding: EdgeInsets.all(1.0),
           shrinkWrap: true,
@@ -127,14 +128,7 @@ class _SettingState extends State<Setting> {
 
                 ),
 
-                SettingsTile.navigation(
-                  leading: Icon(Icons.contacts_outlined,color: Colors.deepOrange,size: 25.0,),
-                  title: Text('Contact Us'),
 
-
-
-
-                ),
                 SettingsTile.navigation(
                   leading: Icon(Icons.contact_support_outlined,color: Colors.deepPurple,size: 25.0,),
                   title: Text('Terms and Conditions'),
@@ -146,7 +140,7 @@ class _SettingState extends State<Setting> {
                   },
                 ),
                 SettingsTile.navigation(
-                  leading: Icon(Icons.info_outline_rounded,color: Colors.black,size: 25.0,),
+                  leading: Icon(Icons.info_outline_rounded,color: Colors.deepOrange,size: 25.0,),
                   title: Text('AboutUs'),
                   onPressed: (context){
                     Navigator.push(context,

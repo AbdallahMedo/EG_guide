@@ -483,7 +483,7 @@ class _mapsscreenState extends State<mapsscreen> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('lib/icons/loc.jpg'),
-                    opacity: 0.3,
+                    opacity: 0.2,
                     fit: BoxFit.fitHeight
                 ),
 
@@ -525,7 +525,7 @@ class _mapsscreenState extends State<mapsscreen> {
                       text:TextSpan(
                         children: <TextSpan>[
                           TextSpan(
-                            text: "(1) اذهب مباشرة الي اول علامه\n (موقف مواصلات اشليم - قويسنا)\n قم باخذ السياره المتجهه لقويسنا \n\n",
+                            text: " اذهب مباشرة الي اول علامه (1)\n (موقف مواصلات اشليم - قويسنا)\n قم باخذ السياره المتجهه لقويسنا \n\n",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,

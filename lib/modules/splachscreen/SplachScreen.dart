@@ -1,11 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ttttt/modules/pageview/list.dart';
-
-import '../login/login_page.dart';
-
 class SplashScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StartState();
@@ -30,7 +26,9 @@ class StartState extends State<SplashScreen> {
   }
 
   route() {
-    Navigator.pushReplacement(context, MaterialPageRoute(
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
         builder: (context) => list()
     )
     );
@@ -45,13 +43,13 @@ class StartState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: SvgPicture.asset("lib/icons/splach.svg"),
+              child: Image.asset('lib/icons/splach2.png'),
               height: 200.0,
               width: 200.0,
             ),
             Padding(padding: EdgeInsets.only(top: 20.0)),
             Text(
-              "Splash Screen",
+              "EGY-GUIDE",
               style: TextStyle(
                   fontSize: 20.0,
                   color: Colors.white

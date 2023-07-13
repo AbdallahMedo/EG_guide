@@ -47,5 +47,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription </key>
+    	<String>Photo Library Usage<String/>
+    	<key>NSPhotoLibraryUsageDescription </key>
+    	<String>Photo Library Usage<String/>
+    	<key>NSPhotoLibraryUsageDescription </key>
+    	<String>Photo Library Usage<String/>
 </dict>
 </plist>

@@ -38,7 +38,8 @@ class About_Us extends StatelessWidget {
             child: Text(
               "Hello, welcome to our app.\nWe are a team in the faculty of computer and Information Menofia University, we present to you the app which helps you to find your way to the public transport when you lost in Menofia governorate specifically in Shebin El-kom.\nAll you have to do is enter your destination (the place you are looking for) then we will tell you the full path with written notes which will lead you to your desired location.\nWe build this from A to Z and when we talk about us,\nwe must mention …\nOur leader Abdallah Ayman Khahla who leads our team well and the members of the team is …\nAbdallah Mohamed Aboghazalh\nAhmed Mostafa Saad\nKareem Magdy Ali\nMeena-Allah Mohsen Bedda\nSalma Rasmi Zain-Elden\nIt’s our honor to lead you when you lost\n",
               style: TextStyle(
-                fontSize: 17.0,
+                fontSize: 20.0,
+
               ),
             ),
           ),

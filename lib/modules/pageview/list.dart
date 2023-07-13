@@ -15,19 +15,19 @@ class _listState extends State<list> {
   PageController _controller = PageController();
   List<Widget> _pages = [
     page_view(
-        title: "Keep",
+        title: "You are lost",
         description:
-        "Accept cryptocurrencies and digital assets, keep thern here, or send to orthers",
+        "Going to a new place and don't know the way?\nDo you want the independence of public transportation, but it is exhausting and difficult?",
         image: "lib/icons/1.svg"),
     page_view(
-        title: "Buy",
+        title: "EGY-GUIDE",
         description:
-        "Buy Bitcoin and cryptocurrencies with VISA and MasterVard right in the App",
+        "is the solution to all this in the easiest way possible\nOpen the application, select your current location, choose your destination, and enjoy the best companion that describes your way",
         image: "lib/icons/3.svg"),
     page_view(
-        title: "Sell",
+        title: "With you",
         description:
-        "Sell your Bitcoin cryptocurrencies or Change with orthres digital assets or flat money",
+        "Make EGY-GUIDE your permanent companion in all your destinations and enjoy the best friend throughout the trip",
         image: "lib/icons/4.svg"),
   ];
   _onchanged(int index) {

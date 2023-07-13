@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
-
 import 'package:flutter/material.dart';
-
 import '../provider/auth_provider.dart';
 
 class Profile extends StatefulWidget {
@@ -16,7 +15,9 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+
     var prov = Provider.of<AuthProvider>(context);
+
 
     return Scaffold(
       body: Container(
@@ -52,7 +53,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             SizedBox(
-              height: 25.0,
+              height: 60.0,
             ),
             Center(
               child: Stack(
@@ -65,7 +66,7 @@ class _ProfileState extends State<Profile> {
                     bottom: 5.0,
                     right: 10.0,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed:(){},
                       icon: Icon(
                         Icons.camera_alt,
                         size: 35.0,
@@ -77,7 +78,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             SizedBox(
-              height: 20.0,
+              height: 30.0,
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -86,18 +87,11 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white70
-                      ),
-                      child: Text(
-                        'Username: karim magdy ',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: Text(
+                      'Username: karim magdy ',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -106,18 +100,11 @@ class _ProfileState extends State<Profile> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white70
-                      ),
-                      child: Text(
-                        'Email: ${prov.user?.email} ',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: Text(
+                      'Email: ${prov.user?.email} ',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -126,18 +113,11 @@ class _ProfileState extends State<Profile> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white70
-                      ),
-                      child: Text(
-                        'Phone Number: ',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: Text(
+                      'Phone Number: 01214578541',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
